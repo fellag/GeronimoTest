@@ -55,7 +55,7 @@ foreach($obj_posts  as $post)
     {  
     
           ?> 
-        <div class="item  col-sm-12  "><img src="https://source.unsplash.com/randoms" />
+        <div class="item  col-sm-12  "><img src="<?php  echo get_redirect_target("https://source.unsplash.com/random"); ?>" />
 
                  <p> <?php  echo  $post->title;  ?> </p>
         </div>
