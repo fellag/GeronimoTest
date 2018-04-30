@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: '../integration/fonts/',
                 src: ['*.*'],
-                dest: '../dist/styles/fonts'
+                dest: '../dist/css/fonts'
             }
         },
         concat: {
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
             },
             dev: {
                 src: ['../integration/js/**/*.js'],
-                dest: '../dist/js/main.min.js'
+                dest: '../dist/js/main.js'
             },
             prod: {
                 src: ['../integration/js/**/*.js'],
@@ -78,7 +78,7 @@ module.exports = function (grunt) {
             integration: {
                 options: {
                     sassDir: ['../integration/scss'],
-                    cssDir: ['../dist/styles'],
+                    cssDir: ['../dist/css'],
                     outputStyle: 'nested',
                     debugInfo: false,
                     noLineComments: false,
@@ -98,7 +98,7 @@ module.exports = function (grunt) {
             prod: {
                 options: {
                     sassDir: ['../integration/scss'],
-                    cssDir: ['../dist/css/'],
+                    cssDir: ['../pub/assets/css/'],
                     environment: 'production',
                     outputStyle: 'compressed',
                     force: true,
@@ -118,8 +118,8 @@ module.exports = function (grunt) {
                         expand: true,
                         flatten: false,
                         cwd: '../dist/js/',
-                        src: 'main.min.js',
-                        dest: '../dist/js/',
+                        src: 'main.js',
+                        dest: '../pub/assets/js/',
                     }
                 ]
             }
@@ -128,8 +128,8 @@ module.exports = function (grunt) {
             options: {
                 port: 9001,
                 // Change this to '0.0.0.0' to access the server from outside.
-                //hostname: 'localhost',
-                hostname: '192.168.1.181',
+                hostname: 'localhost',
+               // hostname: '192.168.1.181',
                 base: '../dist',
                 livereload: 35729
             },
@@ -152,6 +152,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('dev', ['compass:dev', 'concat:dev']);
     grunt.registerTask('production', ['compass:prod', 'concat:prod', 'uglify:prod']);
-    grunt.registerTask('integration', ['compass:integration', 'concat:integration', 'newer:copy:root', 'newer:copy:vendor', 'newer:copy:images', 'newer:copy:fonts', 'connect:livereload', 'watch']);
+    grunt.registerTask('integration', ['compass:integration', 'concat:integration', 'newer:copy:root' , 'newer:copy:images', 'newer:copy:fonts', 'connect:livereload', 'watch']);
 };
 

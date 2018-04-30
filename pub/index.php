@@ -5,8 +5,8 @@
     <title>Test project</title>
     <meta content="Test project description" name="description">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="css/global.css" rel="stylesheet">
-    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/global.css" rel="stylesheet">
+    <link href="assets/css/bootstrap/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 
@@ -45,14 +45,20 @@ function get_redirect_target($url)
 }
 
 $rest  = new RestCllient();
+// TODO  php.ini  curl.cainfo = /path/of/the/keys/cacert.pem
 $posts  = $rest->setUrl('http://jsonplaceholder.typicode.com/posts')->get();
 $obj_posts = json_decode($posts["content"]);
- 
+ $i=0;
 
 
 foreach($obj_posts  as $post)
 
     {  
+$i++;
+if($i>30)
+break ;
+
+//TODO systeme de pagination 
     
           ?> 
         <div class="item  col-sm-12  "><img src="<?php  echo get_redirect_target("https://source.unsplash.com/random"); ?>" />
@@ -69,7 +75,7 @@ foreach($obj_posts  as $post)
 
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
